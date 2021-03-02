@@ -13,10 +13,12 @@ body {
 <body>
 
 <h3>Tijd tot uitbetaling salaris Albert Heijn:</h3>
-<h2 id="countdown"></h23>
+<h2 id="countdown"></h2><br>
+<button onClick="toggleMonth()" id="togglebutton">Volgende maand</button>
 
 <script>
 var countDownDate = new Date("Mar 8, 2021 00:00:00").getTime();
+var toggle = 1
 
 var x = setInterval(function() {
 
@@ -36,7 +38,19 @@ var x = setInterval(function() {
     clearInterval(x);
     document.getElementById("countdown").innerHTML = "Je wordt vandaag uitbetaald!";
   }
-}, 1000);
+}, 10);
+
+function toggleMonth() {
+  if (toggle == 1) {
+    countDownDate = new Date("Apr 12, 2021 00:00:00").getTime();
+    toggle = 2;
+    document.querySelector('#togglebutton').innerText = 'Deze maand';
+  } else {
+  	countDownDate = new Date("Mar 8, 2021 00:00:00").getTime();
+  	toggle = 1;
+    document.querySelector('#togglebutton').innerText = 'Vorige maand';
+  }
+}
 </script>
 
 </body>
